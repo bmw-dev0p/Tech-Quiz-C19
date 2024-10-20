@@ -59,7 +59,8 @@ const Quiz = () => {
       <div className="card p-4 text-center">
         <h2>Quiz Completed</h2>
         <div className="alert alert-success">
-          Your score: {score}/{questions.length}
+          {/* inserted h3 tag for a component test  */}
+          <h3>Your score: </h3> {score}/{questions.length}
         </div>
         <button className="btn btn-primary d-inline-block mx-auto" onClick={handleStartQuiz}>
           Take New Quiz
@@ -96,3 +97,4 @@ const Quiz = () => {
 };
 
 export default Quiz;
+export type { Question };
