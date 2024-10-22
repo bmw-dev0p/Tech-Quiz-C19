@@ -47,6 +47,7 @@ const Quiz = () => {
   if (!quizStarted) {
     return (
       <div className="p-4 text-center">
+        <h1>Welcome to the Code Quiz!</h1>
         <button className="btn btn-primary d-inline-block mx-auto" onClick={handleStartQuiz}>
           Start Quiz
         </button>
