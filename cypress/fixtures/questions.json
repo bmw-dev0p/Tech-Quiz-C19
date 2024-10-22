@@ -1,6 +1,22 @@
+[
+  {
+  "_id": "1",
+  "question": "What is 5 + 3?",
+  "answers": [
+      { "text": "8", "isCorrect": true },
+      { "text": "5", "isCorrect": false },
+      { "text": "6", "isCorrect": false },
+      { "text": "7", "isCorrect": false }
+  ]
+},
 {
-    "name": "Using fixtures to represent data",
-    "email": "hello@cypress.io",
-    "body": "Fixtures are a great way to mock data for responses to routes"
-  }
-  
+  "_id": "2",
+  "question": "What is 6 + 7?",
+  "answers": [
+      { "text": "4", "isCorrect": false },
+      { "text": "5", "isCorrect": false },
+      { "text": "13", "isCorrect": true },
+      { "text": "7", "isCorrect": false }
+  ]
+}
+]
