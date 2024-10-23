@@ -1,33 +1,4 @@
 import Quiz from '../../client/src/components/Quiz';
-import { Question } from '../../client/src/models/Question';
-
-// interface QuizProps {
-//     questions: Question[];
-//     title: string;
-// }
-
-// const questions: Question [] = [
-//     {
-//         _id: '1',
-//         question: 'What is 5 + 3?',
-//         answers: [
-//             { text: '8', isCorrect: true },
-//             { text: '5', isCorrect: false },
-//             { text: '6', isCorrect: false },
-//             { text: '7', isCorrect: false }
-//         ]
-//     },
-//     {
-//         '_id': '2',
-//         question: 'What is 6 + 7?',
-//         answers: [
-//             { text: '4', isCorrect: false },
-//             { text: '5', isCorrect: false },
-//             { text: '13', isCorrect: true },
-//             { text: '7', isCorrect: false }
-//         ]
-//     }
-// ];
 
 describe('Quiz', () => {
     it('should render the quiz React component entirely', () => {
@@ -43,10 +14,18 @@ describe('Quiz', () => {
         cy.mount(<Quiz />);
         cy.contains('Start Quiz').should('exist');
     });
-    it('should be able to click on the start button', () => {
-        cy.mount(<Quiz />);
+    
+    it('should render the component housing the questions', () => {
+      cy.mount(<Quiz />);
+      cy.contains('Start Quiz').click();
+      cy.wait(1000); // Adjust the wait time based on your API response time
+      cy.get('.card h2').should('exist');
+  });
 
-    });
+  // it should render 4 buttons
+
+  
+    //for the tests below, we need to mock the API call to get the questions from fixtures
     it('should render the first question after starting the quiz', () => {
         // Mount the component
         cy.log('Mounting the Quiz component');
