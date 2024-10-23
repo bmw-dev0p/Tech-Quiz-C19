@@ -59,10 +59,7 @@ const Quiz = () => {
     return (
       <div className="card p-4 text-center">
         <h2>Quiz Completed</h2>
-        <div className="alert alert-success">
-          {/* inserted h3 tag for a component test  */}
-          <h3>Your score: </h3> {score}/{questions.length}
-        </div>
+        <h3 data-cy="score" className="alert alert-success">Your score: {score}/{questions.length}</h3>
         <button className="btn btn-primary d-inline-block mx-auto" onClick={handleStartQuiz}>
           Take New Quiz
         </button>

@@ -28,6 +28,12 @@ describe('User Journey', () => {
         cy.get('button').click();
         cy.get('.btn-primary').first().click();
     });
+    it('should display the next question after clicking on an answer', () => {
+        cy.contains('Start Quiz').click();
+        cy.wait(1000); // Adjust the wait time based on your API response time
+        cy.get('.btn-primary').first().click(); // Assuming the first answer is correct
+        cy.get('.card h2').should('exist');
+    });
 
     it('should see the Quiz Completed text when the quiz is over', () => {
         cy.get('button').click();
@@ -58,4 +64,5 @@ describe('User Journey', () => {
         }
         cy.get('h2').should('have.text', 'Quiz Completed');
     });
+    
 });
