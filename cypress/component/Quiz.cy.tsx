@@ -1,33 +1,4 @@
 import Quiz from '../../client/src/components/Quiz';
-import { Question } from '../../client/src/models/Question';
-
-// interface QuizProps {
-//     questions: Question[];
-//     title: string;
-// }
-
-// const questions: Question [] = [
-//     {
-//         _id: '1',
-//         question: 'What is 5 + 3?',
-//         answers: [
-//             { text: '8', isCorrect: true },
-//             { text: '5', isCorrect: false },
-//             { text: '6', isCorrect: false },
-//             { text: '7', isCorrect: false }
-//         ]
-//     },
-//     {
-//         '_id': '2',
-//         question: 'What is 6 + 7?',
-//         answers: [
-//             { text: '4', isCorrect: false },
-//             { text: '5', isCorrect: false },
-//             { text: '13', isCorrect: true },
-//             { text: '7', isCorrect: false }
-//         ]
-//     }
-// ];
 
 describe('Quiz', () => {
     it('should render the quiz React component entirely', () => {
@@ -43,11 +14,24 @@ describe('Quiz', () => {
         cy.mount(<Quiz />);
         cy.contains('Start Quiz').should('exist');
     });
-    it('should be able to click on the start button', () => {
-        cy.mount(<Quiz />);
+    
+    it('should render the component housing the questions', () => {
+      cy.mount(<Quiz />);
+      cy.contains('Start Quiz').click();
+      cy.wait(500); // Adjust the wait time based on your API response time
+      cy.get('.card h2').should('exist');
+  });
 
-    });
-    it('should render the first question after starting the quiz', () => {
+  it('should render 4 buttons for each question', () => {
+    cy.mount(<Quiz />);
+    cy.contains('Start Quiz').click();
+    cy.wait(500); // Adjust the wait time based on your API response time
+    cy.get('.btn-primary').should('have.length', 4);
+});
+
+  // add test for making sure there are only 10 questions? 
+    //for the tests below, we need to mock the API call to get the questions from fixtures
+    it('should render the question data from the db', () => {
         // Mount the component
         cy.log('Mounting the Quiz component');
         cy.mount(<Quiz />);
@@ -86,7 +70,7 @@ describe('Quiz', () => {
 
 
 
-    it('should answer all 10 questions and display the correct score', () => {
+    it('should keep track of correct answers and display the correct score', () => {
         // Mount the component
         cy.log('Mounting the Quiz component');
         cy.mount(<Quiz />);
@@ -123,7 +107,7 @@ describe('Quiz', () => {
     it('should display the quiz completed message after answering all questions', () => {
         cy.mount(<Quiz />);
         cy.contains('Start Quiz').click();
-        cy.wait(1000); // Adjust the wait time based on your API response time
+        cy.wait(500); // Adjust the wait time based on your API response time
         // Loop through each question and answer all questions
         cy.log('Answering all questions.');
         for (let i = 0; i < 10; i++) {
@@ -137,7 +121,7 @@ describe('Quiz', () => {
     it('should render the button to take a new quiz after the quiz is over', () => {
         cy.mount(<Quiz />);
         cy.contains('Start Quiz').click();
-        cy.wait(1000); // Adjust the wait time based on your API response time
+        cy.wait(500); // Adjust the wait time based on your API response time
         // Loop through each question and answer all questions
         cy.log('Answering all questions.');
         for (let i = 0; i < 10; i++) {
